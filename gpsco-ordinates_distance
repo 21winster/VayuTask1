@@ -1,0 +1,26 @@
+from math import radians, cos, sin, asin, sqrt
+
+# Implement the formula below
+def distance_d(LaA, LaB, LoA, LoB):
+
+# The function "radians" is found in the math module, It's also used to convert radians to degrees.
+    LoA = radians(LoA)
+    LoB = radians(LoB)
+    LaA = radians(LaA)
+    LaB = radians(LaB)
+    # The "Haversine formula" is used.
+    D_Lo = LoB - LoA
+    D_La = LaB - LaA
+    P = sin(D_La / 2) ** 2 + cos(LaA) * cos(LaB) * sin(D_Lo / 2) ** 2
+
+    Q = 2 * asin(sqrt(P))
+    # The earth's radius in kilometers.
+    R_km = 6371
+    # Then we'll compute the outcome.
+    return (Q * R_km)
+
+LaA = 19.05105
+LaB = 19.06558
+LoA = 72.82898
+LoB = 72.8343
+print("The distance between both the gps co-ordinates is: ", distance_d(LaA, LaB, LoA, LoB), "K.M")
